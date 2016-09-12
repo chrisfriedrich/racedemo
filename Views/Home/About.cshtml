@@ -1,0 +1,129 @@
+﻿@{
+    ViewBag.Title = "About";
+    Layout = null;
+}
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>jQuery UI Progressbar - Default functionality</title>
+    <link href="~/Content/jquery-ui.css" type="text/css" rel="stylesheet" />
+    <script src="~/Scripts/jquery-3.1.0.js" ></script>
+    <script src="~/Scripts/jquery-ui-1.12.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.0/jquery-ui.js"></script>
+    <style>
+        body {
+            text-align: center;
+        }
+
+        #UOProgressBar {
+            width: 100%;
+            height: 100px;
+            margin: 20px auto;
+            color: orange;
+        }
+
+        #UOProgressBar div {
+            background-color: green;
+        }
+
+        #OSUProgressBar {
+            width: 100%;
+            height: 100px;
+            margin: 20px auto;
+            color: orange;
+        }
+
+        #OSUProgressBar div {
+            background-color: orange;
+        }
+
+        .ui-progressbar-value {
+            background-color: green;
+        }
+
+    </style>
+
+    <script>
+        $(function () {
+            var $pG = $('#UOProgressBar').progressbar();
+            var pGress = setInterval(function () {
+                var pVal = $pG.progressbar('option', 'value');
+                var pCnt = !isNaN(pVal) ? (pVal + 1) : 1;
+                if (pCnt > 100) {
+                    clearInterval(pGress);
+                } else {
+                    $pG.progressbar({
+                        value: pCnt
+                    });
+                }
+            }, 10);
+        });        $(function () {
+            var $pG = $('#OSUProgressBar').progressbar();
+
+            var speed = $("#OSUSpeed").val;
+
+            var pGress = setInterval(function () {
+                
+                var pVal = $pG.progressbar('option', 'value');
+                var pCnt = !isNaN(pVal) ? (pVal + 1) : 1;
+                if (pCnt > 100) {
+                    clearInterval(pGress);
+                } else {
+                    $pG.progressbar({
+                        value: pCnt
+                    });
+                }
+            }, speed);
+        });        //$(function () {
+        //    $('#UOProgressBar').progressbar();
+        //    $pVal = $('.ui-progressbar-value').addClass('ui-corner-right');
+        //    var pGress = setInterval(function () {
+        //        var pCnt = $pVal.width();
+        //        var rDom = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+        //        var step = rDom >= 100 ? 100 : rDom;
+        //        doAnim(step);
+        //    }, 1000);
+        //    var doAnim = function (wD) {
+        //        $pVal.stop(true).animate({
+        //            width: wD + '%'
+        //        }, 1000, 'easeOutBounce');
+        //        if (wD >= 100)
+        //            clearInterval(pGress)
+        //    }
+        //});
+
+        //$(function () {
+        //    $('#OSUProgressBar').progressbar();
+        //    $pVal = $('.ui-progressbar-value').addClass('ui-corner-right');
+        //    var pGress = setInterval(function () {
+        //        var pCnt = $pVal.width();
+        //        var rDom = Math.floor(Math.random() * (100 - 50 + 1) + 50);
+        //        var step = rDom >= 100 ? 100 : rDom;
+        //        doAnim(step);
+        //    }, 1000);
+        //    var doAnim = function (wD) {
+        //        $pVal.stop(true).animate({
+        //            width: wD + '%'
+        //        }, 1000, 'easeOutBounce');
+        //        if (wD >= 100)
+        //            clearInterval(pGress)
+        //    }
+        //});
+
+    </script>
+</head>
+<body>
+
+    <p>
+        <div id="UOProgressBar"></div>
+    </p>
+    <p>
+        <div id="OSUProgressBar"></div>
+    </p>
+    <p>
+        
+    </p>
+</body>
+</html>
